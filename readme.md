@@ -9,7 +9,7 @@ Create a symlink to a folder on your path (run `echo $PATH` in terminal to find 
 * restart your terminal
 * run `chost` in the folder you want to use as localhost, or pass in relative path (directly below your current position only) as an argument as follows:
 
-    chost client/projname/siteroot/
+    `chost client/projname/siteroot/`
 
 Make sure your webserver is pointing towards ~/Sites/localhost.
 
