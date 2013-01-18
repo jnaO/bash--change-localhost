@@ -5,6 +5,7 @@
 USERARG=$1
 BASE=`pwd`
 WEBROOT=''
+LOCALHOST=~/Sites/localhost
 
 traverse() {
   # Recursive function, make initial check to see if we
@@ -38,6 +39,8 @@ else
   WEBROOT=`pwd`'/'$USERARG
 fi
 
+
+
 # Check if argument passed is a folder, and if not, exit script
 if [ -d "${WEBROOT}" ]
 then
@@ -56,5 +59,10 @@ else
   exit
 fi
 
+# Remove old symlink if exists
+if [ -e $LOCALHOST ];
+then
 rm ~/Sites/localhost
+fi
+
 ln -s $WEBROOT ~/Sites/localhost
