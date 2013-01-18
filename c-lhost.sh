@@ -26,37 +26,34 @@ traverse() {
     traverse $BASE $USERARG
   else
     WEBROOT=$BASE'/'$USERARG
-
-    # Check if argument passed is a folder, and if not, exit script
-    if [ -d "${WEBROOT}" ] ; then
-      echo ""
-      echo "Changing your web root to:"
-      echo ""
-      echo " ~---=== $WEBROOT ===---~ "
-      echo ""
-      echo ""
-    else
-      echo ""
-      echo "$WEBROOT is not a folder."
-      echo "You need to pass in the path to a folder that you wan't to use as your webroot."
-      echo "-------------------------------------------------------------------------------"
-      echo ""
-      exit
-    fi
   fi
 }
 
 if [[ "$USERARG" == /* ]]
 then
   WEBROOT=$USERARG
-  echo $WEBROOT
-elif [[ "$1" == ../* ]]
+elif [[ "$USERARG" == ../* ]]
 then
-  echo 'not directly below current working directory'
   traverse $BASE $USERARG
 else
   WEBROOT=`pwd`'/'$USERARG
-  echo $WEBROOT
+fi
+
+# Check if argument passed is a folder, and if not, exit script
+if [ -d "${WEBROOT}" ] ; then
+  echo ""
+  echo "Changing your web root to:"
+  echo ""
+  echo " ~---=== $WEBROOT ===---~ "
+  echo ""
+  echo ""
+else
+  echo ""
+  echo "$WEBROOT is not a folder."
+  echo "You need to pass in the path to a folder that you wan't to use as your webroot."
+  echo "-------------------------------------------------------------------------------"
+  echo ""
+  exit
 fi
 
 rm ~/Sites/localhost
