@@ -18,7 +18,6 @@ Make sure your webserver is pointing towards `~/Sites/localhost`.
 
 And by changing that symlink, you change your localhost.
 No restart of your apache/equivalent server is needed.
-
 This script automates the symlinking part.
 
 run `chost` in the folder you want to use as localhost, or pass in a path as an argument as follows:
