@@ -1,7 +1,6 @@
 #!/bin/bash
-
-
-# And here we have Bash Patterns:
+# Author:
+#      jnaO
 
 USERARG=$1
 BASE=`pwd`
@@ -40,7 +39,8 @@ else
 fi
 
 # Check if argument passed is a folder, and if not, exit script
-if [ -d "${WEBROOT}" ] ; then
+if [ -d "${WEBROOT}" ]
+then
   echo ""
   echo "Changing your web root to:"
   echo ""
