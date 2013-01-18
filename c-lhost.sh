@@ -12,7 +12,7 @@ traverse() {
   # need to substring the paths
   if [[ "${USERARG}" == ../* ]]
   then
-    # Split the currently working directory (or what's
+    # Split the current working directory (or what's
     # left of it), into an array
     IFS='/' read -ra SOFTPATH <<< "${BASE}"
     # For readability, store the string to be trimmed in a variable
@@ -26,6 +26,8 @@ traverse() {
     traverse $BASE $USERARG
   else
     WEBROOT=$BASE'/'$USERARG
+
+    # Check if argument passed is a folder, and if not, exit script
     if [ -d "${WEBROOT}" ] ; then
       echo ""
       echo "Changing your web root to:"
@@ -39,6 +41,7 @@ traverse() {
       echo "You need to pass in the path to a folder that you wan't to use as your webroot."
       echo "-------------------------------------------------------------------------------"
       echo ""
+      exit
     fi
   fi
 }
