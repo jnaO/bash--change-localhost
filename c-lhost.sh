@@ -45,9 +45,8 @@ fi
 if [ -d "${WEBROOT}" ]
 then
   echo ""
-  echo "Changing your web root to:"
   echo ""
-  echo " ~---=== $WEBROOT ===---~ "
+  echo " ~---=== New webroot: $WEBROOT ===---~ "
   echo ""
   echo ""
 else
