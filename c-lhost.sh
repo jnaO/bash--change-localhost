@@ -6,6 +6,7 @@ USERARG=$1
 BASE=`pwd`
 WEBROOT=''
 LOCALHOST=~/Sites/localhost
+LOCALHOST_LOGS=~/Sites/localhost_logs
 
 traverse() {
   # Recursive function, make initial check to see if we
@@ -44,24 +45,31 @@ fi
 # Check if argument passed is a folder, and if not, exit script
 if [ -d "${WEBROOT}" ]
 then
-  echo ""
-  echo ""
-  echo " ~---=== New webroot: $WEBROOT ===---~ "
-  echo ""
-  echo ""
+  # Remove old symlink if exists
+  if [ -e $LOCALHOST ];
+  then
+    rm $LOCALHOST
+  fi
+  # Create folder for log storing, if not exist
+  if [ ! -d $LOCALHOST_LOGS ];
+  then
+    mkdir $LOCALHOST_LOGS
+  fi
+  ln -s $WEBROOT ~/Sites/localhost
+
+  echo "
+
+~---=== New webroot: $WEBROOT ===---~
+
+"
 else
-  echo ""
-  echo "$WEBROOT is not a folder."
-  echo "You need to pass in the path to a folder that you wan't to use as your webroot."
-  echo "-------------------------------------------------------------------------------"
-  echo ""
+  echo "
+
+$WEBROOT is not a folder.
+You need to pass in the path to a folder that you wan't to use as your webroot.
+-------------------------------------------------------------------------------
+
+"
   exit
 fi
 
-# Remove old symlink if exists
-if [ -e $LOCALHOST ];
-then
-rm ~/Sites/localhost
-fi
-
-ln -s $WEBROOT ~/Sites/localhost
