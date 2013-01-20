@@ -30,12 +30,17 @@ traverse() {
   fi
 }
 
+# Absolute path
 if [[ "$USERARG" == /* ]]
 then
   WEBROOT=$USERARG
+
+# Soft path
 elif [[ "$USERARG" == ../* ]]
 then
   traverse $BASE $USERARG
+
+# Relative path
 else
   WEBROOT=`pwd`'/'$USERARG
 fi
