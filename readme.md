@@ -17,6 +17,8 @@ Make sure your webserver is pointing towards `~/Sites/localhost`.
 run `chost` in the folder you want to use as localhost, or pass in a path as an argument as follows:
 `chost client/projname/siteroot/`
 
+`chost -l` returns current local host.
+
 Now there will be a symlink to the desired web root folder.
 And by changing that symlink, you change your localhost.
 No restart of your apache/equivalent server is needed.
