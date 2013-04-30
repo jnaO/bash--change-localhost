@@ -102,7 +102,7 @@ then
   then
     mkdir $LOCALHOST_LOGS
   fi
-  ln -s $WEBROOT ~/Sites/localhost
+  ln -s "$WEBROOT" ~/Sites/localhost
 
   echo $(tput bold)$(tput setaf 32)"
 
